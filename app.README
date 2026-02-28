@@ -41,6 +41,9 @@ Each clip shoudl include:
 
 Phase 2 Build:
 
+Now, we need to add multi-user functionality to the app.  
+Each user will have their own library of clips and will be able to share clips with other users.
+
 
 Phase 2 Features:
 - Save button to save the clip to the user's library
