@@ -123,7 +123,7 @@ export default function Home() {
         ) : (
           <div className="flex flex-col items-center justify-center py-20 text-center text-muted-foreground">
             <p className="text-lg font-medium">No clips found</p>
-            <p className="text-sm">Try adjusting your filters or search.</p>
+            <p className="text-sm">Try changing your filters or search.</p>
           </div>
         )}
       </div>
