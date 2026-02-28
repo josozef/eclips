@@ -1,0 +1,55 @@
+
+
+APP OVERVIEW:
+
+EClips is an app that allows users to read-in or upload game clips from streaming platforms like twitch, youtube, kick, consoles, or stream editing software and then share those clips to other platforms like Instagram, tiktok, youtube etc.
+
+User will be able to Organize the clips by game, time the clip was generated, moments that make the clip such as getting kills, getting killed, winning, losing, various ranges of emotions (High intensity, calm demeanor) 
+
+Once clips are transferred to the new platform the user can edit clips by shortening them, giving them titles, thumbnails, and personal ranking system based on the clips experience (Funny, sad, happy, romantic, intense ect.)
+
+Once all the clips are organized and edited to users satisfaction the user may make their own personal page where other users of the platform could follow like and most importantly share the clips on page. 
+
+Sharing and storing  clips to other users and other platforms is the main goal with this app.
+
+TECH STACK:
+
+Start from Vercel's Next.js with Supabase starter template.
+https://vercel.com/templates/next.js/supabase
+
+Dark Mode
+
+Phase 1 Build:
+
+
+Phase 1 Features:
+- Create a basic clip list view with a top navigation bar
+- User dummy data for clips for now.  include games like Arc Raiders, PubgFortnight, Apex Legends, League of Legends, Valorant, Overwatch, CS:GO
+- Inlcude filtering and search functionality for clips.
+- Order by most recent, most popular, most liked, most commented on, etc.
+
+Each clip shoudl include:
+- A playable video thumbnails
+- Clip length
+- Game name
+- Time of clip
+- Tags of Moments that make the clip such as Dying, Apeing, Warlord, win, GGs, various ranges of emotions (intense, calm, funny)
+- Most viewed, most liked, most commented on, etc.
+- Share button to share the clip to other platforms like Instagram, tiktok, youtube, etc.
+
+
+
+Phase 2 Build:
+
+
+Phase 2 Features:
+- Save button to save the clip to the user's library
+- Edit button to edit the clip
+- Delete button to delete the clip
+- Copy button to copy the clip to the user's clipboard
+- Download button to download the clip to the user's device
+- Upload button to upload the clip to the user's library
+- Share button to share the clip to other platforms like Instagram, tiktok, youtube, etc.
+- Save button to save the clip to the user's library
+- Edit button to edit the clip
+- Delete button to delete the clip
