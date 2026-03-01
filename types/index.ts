@@ -1,79 +1,39 @@
-export type ClipTag =
-  | "Dying"
-  | "Apeing"
-  | "Warlord"
-  | "Win"
-  | "GGs"
-  | "Intense"
-  | "Calm"
-  | "Funny";
+export type SortOption = "recent" | "popular" | "featured";
 
-export type GameName =
-  | "Arc Raiders"
-  | "PUBG"
-  | "Fortnite"
-  | "Apex Legends"
-  | "League of Legends"
-  | "Valorant"
-  | "Overwatch"
-  | "CS:GO";
+export type SocialProvider = "twitch" | "youtube" | "tiktok" | "instagram";
 
-export type SortOption = "recent" | "popular" | "liked" | "commented";
+export type ShareDestination = "youtube" | "tiktok" | "instagram";
+
+export interface ShareStatus {
+  shared_at: string;
+  destination_url: string | null;
+}
 
 export interface Clip {
   id: string;
+  user_id: string;
+  source_provider: string;
+  source_id: string;
+  url: string | null;
+  embed_url: string | null;
   title: string;
-  game: GameName;
-  thumbnailUrl: string;
+  broadcaster_id: string | null;
+  broadcaster_name: string | null;
+  creator_id: string | null;
+  creator_name: string | null;
+  game_id: string | null;
+  game_name: string | null;
+  language: string | null;
+  thumbnail_url: string | null;
   duration: number;
-  createdAt: string;
-  tags: ClipTag[];
-  views: number;
-  likes: number;
-  comments: number;
-  shares: number;
-  streamer: string;
+  view_count: number;
+  vod_offset: number | null;
+  is_featured: boolean;
+  clip_created_at: string;
+  synced_at: string;
+  updated_at: string;
+  shares: Record<string, ShareStatus>;
 }
-
-export const SORT_LABELS: Record<SortOption, string> = {
-  recent: "Most Recent",
-  popular: "Most Viewed",
-  liked: "Most Liked",
-  commented: "Most Commented",
-};
-
-export const ALL_TAGS: ClipTag[] = [
-  "Dying", "Apeing", "Warlord", "Win", "GGs", "Intense", "Calm", "Funny",
-];
-
-export const ALL_GAMES: GameName[] = [
-  "Arc Raiders", "PUBG", "Fortnite", "Apex Legends",
-  "League of Legends", "Valorant", "Overwatch", "CS:GO",
-];
-
-export const GAME_COLORS: Record<string, string> = {
-  "Arc Raiders": "#E67E22",
-  PUBG: "#F39C12",
-  Fortnite: "#3498DB",
-  "Apex Legends": "#E74C3C",
-  "League of Legends": "#9B59B6",
-  Valorant: "#E91E63",
-  Overwatch: "#F57C00",
-  "CS:GO": "#2ECC71",
-};
-
-export const TAG_COLORS: Record<string, string> = {
-  Dying: "#E74C3C",
-  Apeing: "#E67E22",
-  Warlord: "#9B59B6",
-  Win: "#2ECC71",
-  GGs: "#3498DB",
-  Intense: "#E91E63",
-  Calm: "#00BCD4",
-  Funny: "#FFEB3B",
-};
-
-export type SocialProvider = "twitch" | "youtube" | "tiktok" | "instagram";
 
 export interface ConnectedAccount {
   id: string;
@@ -84,3 +44,15 @@ export interface ConnectedAccount {
   connected_at: string;
   updated_at: string;
 }
+
+export const SORT_LABELS: Record<SortOption, string> = {
+  recent: "Most Recent",
+  popular: "Most Viewed",
+  featured: "Featured",
+};
+
+export const DESTINATION_PROVIDERS: ShareDestination[] = [
+  "youtube",
+  "tiktok",
+  "instagram",
+];
