@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import {
   SignInButton,
   SignUpButton,
@@ -8,27 +9,29 @@ import {
   UserButton,
 } from "@clerk/nextjs";
 import { Button } from "@/components/ui/button";
-import { ThemeSwitcher } from "@/components/theme-switcher";
 
 export function Header() {
   return (
     <header className="sticky top-0 z-30 border-b border-border bg-background/95 backdrop-blur-sm">
-      <div className="mx-auto flex max-w-5xl items-center justify-between px-4 py-3">
-        <h1 className="text-xl font-extrabold tracking-wide">
-          E<span className="text-primary">Clips</span>
-        </h1>
+      <div className="flex items-center justify-between px-6 py-4">
+        <Image
+          src="/logo.png"
+          alt="EClips"
+          width={240}
+          height={48}
+          priority
+          className="h-10 w-auto"
+        />
 
         <div className="flex items-center gap-2">
-          <ThemeSwitcher />
-
           <SignedOut>
             <SignInButton mode="modal">
-              <Button variant="ghost" size="sm" className="h-8 text-xs">
+              <Button variant="ghost" size="sm" className="h-9 text-sm">
                 Sign in
               </Button>
             </SignInButton>
             <SignUpButton mode="modal">
-              <Button variant="default" size="sm" className="h-8 text-xs">
+              <Button variant="default" size="sm" className="h-9 text-sm">
                 Sign up
               </Button>
             </SignUpButton>
