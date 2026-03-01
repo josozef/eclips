@@ -6,12 +6,14 @@ import { fetchClips, syncUser } from "@/lib/queries";
 import { Clip, ClipTag, GameName, SortOption, SORT_LABELS } from "@/types";
 import { ClipCard } from "@/components/clip-card";
 import { FilterBar } from "@/components/filter-bar";
-import { Header } from "@/components/header";
+import { Header, AppView } from "@/components/header";
 import { SearchControls } from "@/components/search-controls";
 import { Landing } from "@/components/landing";
+import { ConnectedAccounts } from "@/components/connected-accounts";
 import { Button } from "@/components/ui/button";
+import { BarChart3 } from "lucide-react";
 
-function ClipsDashboard() {
+function ClipsView() {
   const [allClips, setAllClips] = useState<Clip[]>([]);
   const [loading, setLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState("");
@@ -109,7 +111,6 @@ function ClipsDashboard() {
         />
       )}
 
-      {/* Results bar */}
       <div className="flex items-center justify-between px-4 py-2">
         <span className="text-xs text-muted-foreground">
           {loading ? (
@@ -136,7 +137,6 @@ function ClipsDashboard() {
         )}
       </div>
 
-      {/* Clip list */}
       <div className="flex flex-col gap-2 px-3 pb-8">
         {loading ? (
           <div className="flex flex-col items-center justify-center py-20 text-center text-muted-foreground">
@@ -156,17 +156,49 @@ function ClipsDashboard() {
   );
 }
 
+function AnalyticsView() {
+  return (
+    <div className="mx-auto max-w-3xl px-4 py-12">
+      <div className="flex flex-col items-center justify-center rounded-xl border border-dashed border-border bg-card/50 py-20 text-center">
+        <BarChart3 className="h-10 w-10 text-muted-foreground/40" />
+        <p className="mt-4 text-lg font-medium text-muted-foreground">
+          Analytics coming soon
+        </p>
+        <p className="mt-1 text-sm text-muted-foreground/60">
+          Track views, engagement, and growth across your clips.
+        </p>
+      </div>
+    </div>
+  );
+}
+
+function AccountsView() {
+  return (
+    <div className="mx-auto max-w-3xl px-4 py-6">
+      <h2 className="mb-1 text-lg font-semibold">Accounts</h2>
+      <p className="mb-6 text-sm text-muted-foreground">
+        Manage your clip sources and sharing destinations.
+      </p>
+      <ConnectedAccounts />
+    </div>
+  );
+}
+
 export default function Home() {
+  const [activeView, setActiveView] = useState<AppView>("clips");
+
   return (
     <div className="min-h-screen">
-      <Header />
+      <Header activeView={activeView} onChangeView={setActiveView} />
 
       <SignedOut>
         <Landing />
       </SignedOut>
 
       <SignedIn>
-        <ClipsDashboard />
+        {activeView === "clips" && <ClipsView />}
+        {activeView === "analytics" && <AnalyticsView />}
+        {activeView === "accounts" && <AccountsView />}
       </SignedIn>
     </div>
   );

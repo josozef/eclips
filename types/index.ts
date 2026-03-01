@@ -72,3 +72,15 @@ export const TAG_COLORS: Record<string, string> = {
   Calm: "#00BCD4",
   Funny: "#FFEB3B",
 };
+
+export type SocialProvider = "twitch" | "youtube" | "tiktok" | "instagram";
+
+export interface ConnectedAccount {
+  id: string;
+  provider: SocialProvider;
+  provider_account_id: string;
+  provider_username: string | null;
+  scopes: string[];
+  connected_at: string;
+  updated_at: string;
+}

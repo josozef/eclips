@@ -1,4 +1,4 @@
-import { Clip, ClipTag } from "@/types";
+import { Clip, ClipTag, ConnectedAccount } from "@/types";
 
 interface ClipRow {
   id: number;
@@ -47,4 +47,19 @@ export async function fetchClips(): Promise<Clip[]> {
 
 export async function syncUser(): Promise<void> {
   await fetch("/api/user/sync", { method: "POST" });
+}
+
+export async function fetchConnectedAccounts(): Promise<ConnectedAccount[]> {
+  const res = await fetch("/api/accounts");
+  if (!res.ok) return [];
+  return res.json();
+}
+
+export async function disconnectAccount(provider: string): Promise<boolean> {
+  const res = await fetch("/api/accounts", {
+    method: "DELETE",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ provider }),
+  });
+  return res.ok;
 }
